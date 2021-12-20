@@ -1,0 +1,5 @@
+django_test
+parsers
+__pycache__
+migrations
+db.sqlite3
