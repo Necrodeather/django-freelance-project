@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import WyrestormItem, WyrestormItemsUpdate
+from .models import WyrestormItem
 
 
 admin.site.site_header = 'Admin-panel'
@@ -24,9 +24,7 @@ class MultiDBModelAdmin(admin.ModelAdmin):
         return super().formfield_for_manytomany(db_field, request, using=self.using, **kwargs)
 
 
-class WyrestormItemInline(MultiDBModelAdmin):
+class WyrestormItemsUpdateInline(MultiDBModelAdmin):
     model = WyrestormItem
 
 admin.site.register(WyrestormItem, MultiDBModelAdmin)
-
-

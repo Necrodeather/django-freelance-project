@@ -1,6 +1,6 @@
 django_test
-parser
+parsers
 __pycache__
 migrations
-db.sqlite3
+*.sqlite3
 project
