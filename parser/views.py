@@ -23,25 +23,25 @@ def index(request):
 def power_button(request):
     print('power')
     #chdir(r'/home/necrodeather/Desktop/Wyrestorm-django/parser/parsers/')
-    start_parser(request, 'Включение парсера прошла успешно!')
-    return HttpResponseRedirect('/admin/parser/wyrestormitem/')
+    start_parser(request, 'Включение парсера прошло успешно!')
+    return HttpResponseRedirect('/admin/parser/wyrestormitemsupdate/')
 
 def restart_button(request):
     print('restart')
     #shutdown()
     sleep(5)
-    start_parser(request, 'Перезагрузка парсера прошла успешно!')
-    return HttpResponseRedirect('/admin/parser/wyrestormitem/')
+    start_parser(request, 'Перезагрузка парсера прошло успешно!')
+    return HttpResponseRedirect('/admin/parser/wyrestormitemsupdate/')
 
 def shutdown_button(request):
     print('shutdown')
     #shutdown()
-    messages.add_message(request, messages.INFO, 'Выключение парсера прошла успешно!')
-    return HttpResponseRedirect('/admin/parser/wyrestormitem/')
+    messages.add_message(request, messages.INFO, 'Выключение парсера прошло успешно!')
+    return HttpResponseRedirect('/admin/parser/wyrestormitemsupdate/')
 
 def export_button(request):
     print('export')
     delete = delete_info('wyrestorm_items','wyrestorm_items_update')
     delete.delete()
-    messages.add_message(request, messages.INFO, 'Перенес в основную базу прошла успешно!')
-    return HttpResponseRedirect('/admin/parser/wyrestormitem/')
+    messages.add_message(request, messages.INFO, 'Перенес в основную базу прошло успешно!')
+    return HttpResponseRedirect('/admin/parser/wyrestormitemsupdate/')

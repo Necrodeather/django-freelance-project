@@ -32,6 +32,8 @@ class WyrestormItemsUpdate(models.Model):
     class Meta:
         managed = True
         db_table = 'wyrestorm_items_update'
+        verbose_name = 'Новый товар с изменениями'
+        verbose_name_plural = 'Новые товары с изменениями'
 
     def __str__(self):
         return self.name
