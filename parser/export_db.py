@@ -4,6 +4,7 @@ class delete_info(object):
     def __init__(self, table_main, table_update):
         self.table_update = table_update
         self.table_main = table_main
+        #Редактировать путь до БД парсера
         self.conn = sqlite3.connect(f'/home/necrodeather/Desktop/Wyrestorm-django/parser/parsers/data_storage/database/database.db') 
         self.cursor = self.conn.cursor()
 

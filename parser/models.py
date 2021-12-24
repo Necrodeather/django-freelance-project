@@ -32,6 +32,7 @@ class WyrestormItemsUpdate(models.Model):
     class Meta:
         managed = True
         db_table = 'wyrestorm_items_update'
+        #название таблицы в админ-панели
         verbose_name = 'Новый товар с изменениями'
         verbose_name_plural = 'Новые товары с изменениями'
 

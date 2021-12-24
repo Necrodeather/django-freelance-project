@@ -77,13 +77,15 @@ WSGI_APPLICATION = 'freelance_project.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    #База джанго
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
+    #База парсера
     'parser': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'parser/parsers/data_storage/database/database.db'
+        'NAME': BASE_DIR / 'parser/parsers/data_storage/database/database.db' #Тут редактируется путь к базе парсера
     },
 }
 DATABASE_ROUTERS = [
