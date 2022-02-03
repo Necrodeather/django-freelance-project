@@ -1,0 +1,49 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+
+{% block content %}
+<div id="content-main">
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <th>
+                    SKU
+                </th>
+                <th>
+                    Before Title (старое название)
+                </th>
+                <th>
+                    Before Descripton (старое описание)
+                </th>
+                <th>
+                    After Title (новое название)
+                </th>
+                <th>
+                    After Descripton (новое описание)
+                </th>
+            </tr>
+{% for old in old_data %}
+    {% for new in new_data %}
+        {% if old.sku == new.sku %}
+            {% if old.title != new.title or old.description_short != new.description_short %}
+                <tr>
+                    <th>{{old.sku}}</th>
+                    <th>{{old.title}}</th>   
+                    <th>{{old.description_short}}</th>
+                    <th>{{new.title}}</th>
+                    <th>{{new.description_short}}</th>
+                </tr> 
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+        </tbody>
+    </table>
+    <form action="/update_button">
+        <button id="update">Подтвердить обновление</button>
+    </form>
+</div>
+
+{% endblock %}

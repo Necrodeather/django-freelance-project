@@ -1,9 +1,12 @@
 from django.contrib import admin
-from .models import WyrestormItem, WyrestormItemsUpdate
+from .models import Brand, Image, Product, CatalogProduct
 
 #Название админ панели
 admin.site.site_header = 'Admin-panel'
 
+admin.site.register(Brand)
+admin.site.register(Product)
+admin.site.register(Image)
 
 class MultiDBModelAdmin(admin.ModelAdmin):
     using = 'parser'
@@ -23,8 +26,4 @@ class MultiDBModelAdmin(admin.ModelAdmin):
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         return super().formfield_for_manytomany(db_field, request, using=self.using, **kwargs)
 
-
-class WyrestormItemsUpdateInline(MultiDBModelAdmin):
-    model = WyrestormItem
-
-admin.site.register(WyrestormItemsUpdate, MultiDBModelAdmin)
+admin.site.register(CatalogProduct, MultiDBModelAdmin)

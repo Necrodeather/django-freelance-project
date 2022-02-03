@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from parser.views import power_button, shutdown_button, restart_button, export_button
+from parser import views
 
 urlpatterns = [
+    path('', views.index),
     path('admin/', admin.site.urls),
-    path('shutdown_button/', shutdown_button, name = 'shutdown'),
-    path('restart_button/', restart_button, name = 'restart'),
-    path('power_button/', power_button, name = 'power'),
-    path('export_button/', export_button, name = 'export'),
+    path('view/', views.check_entry, name = 'check'),
+    path('update_button/', views.update_button, name='update'),
+    path('shutdown_button/', views.shutdown_button, name = 'shutdown'),
+    path('restart_button/', views.restart_button, name = 'restart'),
+    path('power_button/', views.power_button, name = 'power'),
+    path('export_button/', views.export_button, name = 'export'),
 ]
