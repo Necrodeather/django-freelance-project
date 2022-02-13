@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.db import models
 
 
@@ -44,11 +43,17 @@ class Product(models.Model):
     description_package = models.TextField(blank=True, null=True)
     description_features = models.TextField(blank=True, null=True)
     description_simplified = models.TextField(blank=True, null=True)
+    time_update = models.DateTimeField(blank=True, null=True)
     bp1 = models.CharField(max_length=255, blank=True, null=True)
     bp2 = models.CharField(max_length=255, blank=True, null=True)
     bp3 = models.CharField(max_length=255, blank=True, null=True)
     bp4 = models.CharField(max_length=255, blank=True, null=True)
     bp5 = models.CharField(max_length=255, blank=True, null=True)
+    bp6 = models.CharField(max_length=255, blank=True, null=True)
+    bp7 = models.CharField(max_length=255, blank=True, null=True)
+    bp8 = models.CharField(max_length=255, blank=True, null=True)
+    bp9 = models.CharField(max_length=255, blank=True, null=True)
+    bp10 = models.CharField(max_length=255, blank=True, null=True)
     brand = models.ForeignKey(Brand, models.DO_NOTHING)
 
     class Meta:
@@ -60,6 +65,26 @@ class Product(models.Model):
     
     def __str__(self):
         return self.sku
+
+#Parser  
+class CatalogBrand(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    url = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'catalog_brand'
+
+
+class CatalogImage(models.Model):
+    image_file = models.CharField(max_length=100, blank=True, null=True)
+    is_main = models.BooleanField(blank=True, null=True)
+    product_id = models.BigIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'catalog_image'
+
 
 class CatalogProduct(models.Model):
     sku = models.TextField(blank=True, null=True)
@@ -76,9 +101,6 @@ class CatalogProduct(models.Model):
     description_package = models.TextField(blank=True, null=True)
     description_features = models.TextField(blank=True, null=True)
     description_simplified = models.TextField(blank=True, null=True)
-    source_name = models.TextField(blank=True, null=True)
-    image_count = models.IntegerField(blank=True, null=True)
-    image_links = models.TextField(blank=True, null=True)
     time_update = models.DateTimeField(blank=True, null=True)
     bp1 = models.TextField(blank=True, null=True)
     bp2 = models.TextField(blank=True, null=True)
@@ -90,12 +112,13 @@ class CatalogProduct(models.Model):
     bp8 = models.TextField(blank=True, null=True)
     bp9 = models.TextField(blank=True, null=True)
     bp10 = models.TextField(blank=True, null=True)
+    brand = models.ForeignKey(CatalogBrand, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'catalog_product'
-        verbose_name = 'Новый продукт'
-        verbose_name_plural = 'Новые продукты'
+        verbose_name = 'Новый Продукт'
+        verbose_name_plural = 'Новые Продукты'
 
     def __str__(self):
         return self.sku

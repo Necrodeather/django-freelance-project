@@ -4,9 +4,7 @@ from .models import Brand, Image, Product, CatalogProduct
 #Название админ панели
 admin.site.site_header = 'Admin-panel'
 
-admin.site.register(Brand)
 admin.site.register(Product)
-admin.site.register(Image)
 
 class MultiDBModelAdmin(admin.ModelAdmin):
     using = 'parser'
