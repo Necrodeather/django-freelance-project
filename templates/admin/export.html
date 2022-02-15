@@ -1,0 +1,37 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+
+{% block content %}
+<div id="content-main">
+    <form action="/export_button">
+        <button id="export_button">Перенести информацию</button>
+    </form>
+    <table border="1">
+        <tbody>
+            <tr>
+                <th>
+                    SKU
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Descripton
+                </th>
+            </tr>
+            {% for data in set_data %}
+                <tr>
+                    <th>{{data.sku}}</th>
+                    <th>{{data.title}}</th>
+                    <th>{{data.description_short}}</th>
+                </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="/export_button">
+        <button id="export_button">Перенести информацию</button>
+    </form>
+</div>
+
+{% endblock %}
