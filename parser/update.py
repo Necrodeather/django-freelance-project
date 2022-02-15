@@ -23,7 +23,8 @@ class update_info:
                     self.update_sku(parser_sku[0],parser_sku[1],parser_sku[2:])
 
     def update_sku(self, id, sku, agrs):
-        up = (f"Update catalog_product set id=? created=?, title=?, manufacturer_url=?, weight=?, length=?, hight=?, depth=?, description_short=?, description_main=?, description_specs=?, description_package=?, description_features=?, description_simplified=?, time_update=?, bp1=?, bp2=?, bp3=?, bp4=?, bp5=?, bp6=?, bp7=?, bp8=?, bp9=?, bp10=?, brand_id=? where sku = ?")
-        data = id+agrs+sku
+        up = (f"Update catalog_product set id=?, created=?, title=?, manufacturer_url=?, weight=?, lenght=?, hight=?, depth=?, description_short=?, description_main=?, description_specs=?, description_package=?, description_features=?, description_simplified=?, time_update=?, bp1=?, bp2=?, bp3=?, bp4=?, bp5=?, bp6=?, bp7=?, bp8=?, bp9=?, bp10=?, brand_id=? where sku = ?")
+        data = (f'{id}',)+agrs+(sku,)
+        print(data)
         self.main_cursor.execute(up, data)
         self.main.commit()

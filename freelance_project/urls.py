@@ -25,5 +25,6 @@ urlpatterns = [
     path('shutdown_button/', views.shutdown_button, name = 'shutdown'),
     path('restart_button/', views.restart_button, name = 'restart'),
     path('power_button/', views.power_button, name = 'power'),
-    path('export_button/', views.export_button, name = 'export'),
+    path('export/', views.export, name = 'export_db'),
+    path('export_button/', views.export_button, name = 'export_button'),
 ]

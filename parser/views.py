@@ -4,7 +4,8 @@ from django.contrib import messages
 from .export_db import add_info
 from time import sleep
 from os import system
-from .models import Product, CatalogProduct
+import freelance_project.models as main
+import parser.models as parser
 from .update import update_info
 from datetime import datetime
 from freelance_project.settings import BASE_DIR
@@ -15,8 +16,8 @@ def index(request):
 
 
 def check_entry(request):
-    new_data = CatalogProduct.objects.using('parser').all()
-    old_data = Product.objects.all()
+    new_data = parser.CatalogProduct.objects.using('parser').all()
+    old_data = main.CatalogProduct.objects.using('default').all()
     return render(request, './admin/view.html', {'old_data': old_data, 'new_data': new_data})
 
 def shutdown():
@@ -48,8 +49,14 @@ def shutdown_button(request):
     messages.add_message(request, messages.INFO, 'Выключение парсера прошло успешно!')
     return HttpResponseRedirect('/admin')
 
+def export(request):
+    n_data = parser.CatalogProduct.objects.using('parser').all()
+    o_data = main.CatalogProduct.objects.using('default').all()
+    set_data = n_data.difference(o_data,)
+    print(set_data)
+    return render(request, './admin/export.html', {'set_data': set_data})
+    
 def export_button(request):
-    print('export')
     adding = add_info()
     adding.add_table()
     adding.add_images()
@@ -59,7 +66,7 @@ def export_button(request):
 def update_button(request):
     update = update_info()
     date = str(datetime.today())
-    system(f'copy db.sqlite3 {BASE_DIR}/backupdb/')
+    #system(f'copy db.sqlite3 {BASE_DIR}/backupdb/')
     update.select_sku()
     messages.add_message(request, messages.INFO, 'Изменение в основную базу прошло успешно!')
     return HttpResponseRedirect('/admin')

@@ -16,7 +16,7 @@ class add_info:
             if sql.fetchone() is None:
                 add_sku = self.parser_cursor.execute(f"SELECT * FROM catalog_product WHERE sku = '{db[0]}'")
                 for sku in add_sku:
-                    insert_main = f"INSERT INTO catalog_product (id, sku, created, title, manufacturer_url, weight, length, hight, depth, description_short, description_main, description_specs, description_package, description_features, description_simplified, time_update, bp1, bp2, bp3, bp4, bp5, bp6, bp7, bp8, bp9, bp10, brand_id) VALUES ({'?,' * 26}?)"
+                    insert_main = f"INSERT INTO catalog_product (id, sku, created, title, manufacturer_url, weight, lenght, hight, depth, description_short, description_main, description_specs, description_package, description_features, description_simplified, time_update, bp1, bp2, bp3, bp4, bp5, bp6, bp7, bp8, bp9, bp10, brand_id) VALUES ({'?,' * 26}?)"
                     self.main_cursor.execute(insert_main, sku)
                     self.main.commit()
 
