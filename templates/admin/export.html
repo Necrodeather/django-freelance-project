@@ -4,27 +4,24 @@
 
 {% block content %}
 <div id="content-main">
-    <form action="/export_button">
-        <button id="export_button">Перенести информацию</button>
-    </form>
+    Новые товары
     <table border="1">
         <tbody>
             <tr>
-                <th>
+                <td>
                     SKU
-                </th>
-                <th>
+                </td>
+                <td>
                     Title
-                </th>
-                <th>
-                    Descripton
-                </th>
+                </td>
+                <td>
+                </td>
             </tr>
-            {% for data in set_data %}
+            {% for data in n_data %}
                 <tr>
-                    <th>{{data.sku}}</th>
-                    <th>{{data.title}}</th>
-                    <th>{{data.description_short}}</th>
+                    <td>{{data.sku}}</td>
+                    <td>{{data.title}}</td>
+                    <td><input type="button" value="Внести правки"></td></td>
                 </tr> 
             {% endfor %}
         </tbody>

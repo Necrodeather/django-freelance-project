@@ -1,12 +1,11 @@
 from django.contrib import admin
 from django.apps import apps
-from .models import CatalogProduct as main
-from parser.models import CatalogProduct as parser
+from .models import CatalogProduct, Product
 
 #Название админ панели
 admin.site.site_header = 'Admin-panel'
 
-admin.site.register(main)
+admin.site.register(Product)
 
 
 
@@ -32,17 +31,4 @@ class MultiDBModelAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(parser, MultiDBModelAdmin)
-
-#Костыль#
-#В случае миграции БД произойдет ошибка admin.sites.AlreadyRegistered
-#Закоментировать 36 строку, в с 40 строки расскоментировать
-""" app_config = apps.get_app_config('parser')
-models = app_config.get_models()
-
-for model in models:
-    try:
-        admin.site.register(model, MultiDBModelAdmin)
-    except admin.sites.AlreadyRegistered:
-        pass """
-    
+admin.site.register(CatalogProduct, MultiDBModelAdmin)

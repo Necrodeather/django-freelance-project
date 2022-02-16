@@ -4,8 +4,7 @@ from django.contrib import messages
 from .export_db import add_info
 from time import sleep
 from os import system
-import freelance_project.models as main
-import parser.models as parser
+from .models import Product, CatalogProduct
 from .update import update_info
 from datetime import datetime
 from freelance_project.settings import BASE_DIR
@@ -16,8 +15,8 @@ def index(request):
 
 
 def check_entry(request):
-    new_data = parser.CatalogProduct.objects.using('parser').all()
-    old_data = main.CatalogProduct.objects.using('default').all()
+    new_data = CatalogProduct.objects.using('parser').all()
+    old_data = Product.objects.using('default').all()
     return render(request, './admin/view.html', {'old_data': old_data, 'new_data': new_data})
 
 def shutdown():
@@ -50,11 +49,8 @@ def shutdown_button(request):
     return HttpResponseRedirect('/admin')
 
 def export(request):
-    n_data = parser.CatalogProduct.objects.using('parser').all()
-    o_data = main.CatalogProduct.objects.using('default').all()
-    set_data = n_data.difference(o_data,)
-    print(set_data)
-    return render(request, './admin/export.html', {'set_data': set_data})
+    n_data = CatalogProduct.objects.using('parser').all()
+    return render(request, './admin/export.html', {'n_data': n_data})
     
 def export_button(request):
     adding = add_info()
