@@ -44,10 +44,10 @@ INSTALLED_APPS = [
 ]
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {'location': 'backupdb'}
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backupdb'}
 
 CRONJOBS = [
-    ('* 0 * * *', 'parser.cron.my_scheduled_job', '>> tmp/parser_job.log' )
+    ('* 0 * * *', 'parser.cron.backup_db', '>> tmp/parser_job.log' )
 ]
 
 MIDDLEWARE = [

@@ -8,6 +8,7 @@ from .models import Product, CatalogProduct
 from .update import update_info
 from datetime import datetime
 from freelance_project.settings import BASE_DIR
+from django.core.management import call_command
 
 
 def index(request):
@@ -60,9 +61,9 @@ def export_button(request):
     return HttpResponseRedirect('/admin')
 
 def update_button(request):
+    call_command('dbbackup')
     update = update_info()
     date = str(datetime.today())
-    #system(f'copy db.sqlite3 {BASE_DIR}/backupdb/')
     update.select_sku()
     messages.add_message(request, messages.INFO, 'Изменение в основную базу прошло успешно!')
     return HttpResponseRedirect('/admin')
