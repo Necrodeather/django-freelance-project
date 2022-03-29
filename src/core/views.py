@@ -2,17 +2,17 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from parser.export_db import add_info
+from parser.methods import add_info
 from parser.models import Product as parser
 from info.models import Product as info
-from parser.update import update_info
+from parser.methods import update_info
 
 def index(request):
     return render(request, './index.html')
 
 def export(request):
-    n_data = parser.objects.all()
-    return render(request, './admin/export.html', {'n_data': n_data})
+    export_data = info.objects.filter(unique = False)
+    return render(request, './admin/export.html', {'export_data': export_data})
     
 def export_button(request):
     adding = add_info()

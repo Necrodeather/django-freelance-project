@@ -6,7 +6,7 @@ class Brand(models.Model):
     url = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        app_label = 'info'
+        app_label = 'core'
         verbose_name = 'Бренд'
         verbose_name_plural = 'Бренд'
 
@@ -20,7 +20,7 @@ class Image(models.Model):
     product = models.ForeignKey('Product', models.DO_NOTHING)
 
     class Meta:
-        app_label = 'info'
+        app_label = 'core'
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
 
@@ -53,10 +53,9 @@ class Product(models.Model):
     bp9 = models.CharField(max_length=255, blank=True, null=True)
     bp10 = models.CharField(max_length=255, blank=True, null=True)
     brand = models.ForeignKey(Brand, models.DO_NOTHING)
-    unique = models.BooleanField(blank=True, default=False)
 
     class Meta:
-        app_label = 'info'
+        app_label = 'core'
         unique_together = (('sku', 'brand'),)
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
