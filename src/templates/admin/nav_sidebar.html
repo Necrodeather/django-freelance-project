@@ -17,29 +17,14 @@
     </style>
     <div class="parser_working">
         <h1>Работа Парсера</h1>
-        <form action='/power_button'>
+        <form action='/parser_buttons/power_button'>
             <button id="power" class="btn"> Включение </button>
-            <script>
-                if (document.getElementById('power').onclick = function () {
-                        alert('Включение парсера');
-                    });
-            </script>
         </form>
-        <form action='/restart_button'>
+        <form action='/parser_buttons/restart_button'>
             <button id="restart" class="btn"> Перезапуск </button>
-            <script>
-                if (document.getElementById('restart').onclick = function () {
-                        alert('Перезагрузка парсера');
-                    });
-            </script>
         </form>
-        <form action='/shutdown_button'>
+        <form action='/parser_buttons/shutdown_button'>
             <button id="shutdown" class="btn"> Выключение </button>
-            <script>
-                if (document.getElementById('shutdown').onclick = function () {
-                        alert('Выключение парсера');
-                    });
-            </script>
         </form>
         <form action='/export'>
             <button id="export_db" class="btn"> Перенести информацию </button>

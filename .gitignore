@@ -1,8 +1,3 @@
-.vscode
 env
-parsers
 __pycache__
-migrations
 *.sqlite3
-project
-backupdb

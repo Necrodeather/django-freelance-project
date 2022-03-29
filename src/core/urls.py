@@ -1,4 +1,4 @@
-"""freelance_project URL Configuration
+"""core URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -14,17 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from parser import views
+from django.urls import include, path
+from .views import index, export, check_entry, export_button, update_button
 
 urlpatterns = [
-    path('', views.index),
+    path('', index),
     path('admin/', admin.site.urls),
-    path('view/', views.check_entry, name = 'check'),
-    path('update_button/', views.update_button, name='update'),
-    path('shutdown_button/', views.shutdown_button, name = 'shutdown'),
-    path('restart_button/', views.restart_button, name = 'restart'),
-    path('power_button/', views.power_button, name = 'power'),
-    path('export/', views.export, name = 'export_db'),
-    path('export_button/', views.export_button, name = 'export_button'),
+    path('view/', check_entry, name='check'),
+    path('parser_buttons/', include('parser.urls')),
+    path('export/', export, name='export_db'),
+    path('export_button/', export_button, name='export_button'),
+    path('update_button/', update_button, name='update'),
 ]
