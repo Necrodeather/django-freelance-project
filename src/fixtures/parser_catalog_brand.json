@@ -1,0 +1,26 @@
+[
+    {
+      "model": "parser.brand",
+      "pk": 1,
+      "fields": {
+        "name": "Atlona",
+        "url": "www.atlona.com"
+      }
+    },
+    {
+        "model": "parser.brand",
+        "pk": 2,
+        "fields": {
+          "name": "WyreStorm",
+          "url": "www.wyrestorm.com"
+        }
+      },
+    {
+        "model": "parser.brand",
+        "pk": 3,
+        "fields": {
+          "name": "BZBGEAR",
+          "url": "www.bzbgear.com"
+        }
+    }
+  ]

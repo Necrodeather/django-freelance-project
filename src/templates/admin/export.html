@@ -1,0 +1,34 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+
+{% block content %}
+<div id="content-main">
+    Новые товары
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>
+                    SKU
+                </td>
+                <td>
+                    Title
+                </td>
+                <td>
+                </td>
+            </tr>
+            {% for data in export_data %}
+                <tr>
+                    <td>{{data.sku}}</td>
+                    <td><textarea id="story" name="title" rows="5" cols="33">{{data.title}}</textarea></td>
+                    <td><input type="button" value="Внести правки"></td></td>
+                </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="/export_button">
+        <button id="export_button">Перенести информацию</button>
+    </form>
+</div>
+
+{% endblock %}
